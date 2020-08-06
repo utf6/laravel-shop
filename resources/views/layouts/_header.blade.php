@@ -28,6 +28,10 @@
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
+                                <img src="/images/img.jpg" class="img-responsive img-circle" width="30px" height="30px">
+                            </span>
+
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         
