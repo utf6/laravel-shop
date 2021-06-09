@@ -15,15 +15,14 @@ class CreateUserAddressesTable extends Migration
     {
         Schema::create('user_addresses', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('province', 10)->default('');
-            $table->string('city', 10)->default('');
-            $table->string('district', 10)->default('');
-            $table->string('address', 45)->default('');
-            $table->unsignedInteger('zip');
-            $table->string('contact_name', 45)->default('');
-            $table->string('contact_phone', 15)->default('');
+            $table->unsignedInteger('user_id')->index('user_id')->comment('user_id');
+            $table->string('province', 10)->default('')->comment('省份');
+            $table->string('city', 10)->default('')->comment('城市');
+            $table->string('area', 10)->default('')->comment('区县');
+            $table->string('address', 45)->default('')->comment('详细地址');
+            $table->unsignedInteger('zip_code')->comment('邮政编码');
+            $table->string('name', 45)->default('')->comment('昵称');
+            $table->string('phone', 15)->default('')->comment('手机号码');
             $table->dateTime('last_used_at')->nullable();
             $table->timestamps();
         });
