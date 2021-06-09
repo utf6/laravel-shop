@@ -18,8 +18,6 @@
             @yield('content')
         </main>
     </div>
-
-
     @include('layouts._footer')
 </div>
 <!-- Scripts -->
