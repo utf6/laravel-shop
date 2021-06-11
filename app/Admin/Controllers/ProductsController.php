@@ -77,13 +77,25 @@ class ProductsController extends AdminController
     {
         $form = new Form(new Product());
 
-        $form->text('title', __('Title'));
-        $form->text('description', __('Description'));
-        $form->image('image', __('Image'));
-        $form->switch('on_sale', __('On sale'))->default(1);
+        $form->text('title', __('Title'))->rules('required');
+        $form->text('description', __('Description'))->rules('required');
+        $form->image('image', __('Image'))->rules('required|image');
+        $form->switch('on_sale', __('On sale'))->default(1)->options([
+            '1' => '是',
+            '0' => '否'
+        ]);
+
+        //直接添加一对多模型
+        $form->hasMany('skus', 'SKU 列表', function (Form\NestedForm $form) {
+            $form->text('title', 'SKU 名称')->rules('required');
+            $form->text('description', 'SKU 描述')->rules('required');
+            $form->text('price', '单价')->rules('required|numeric|min:0.01');
+            $form->text('stock', '剩余库存')->rules('required|integer|min:0');
+        });
+
         $form->decimal('rating', __('Rating'))->default(5.00);
-        $form->number('sold_count', __('Sold count'));
-        $form->number('review_count', __('Review count'));
+        $form->number('sold_count', __('Sold count'))->default(0);
+        $form->number('review_count', __('Review count'))->default(0);
         $form->decimal('price', __('Price'));
 
         return $form;
