@@ -1,0 +1,17 @@
+{
+  "ID": "ID",
+  "Created at":"创建时间",
+  "Updated at":"更新时间",
+  "Email" : "邮箱地址",
+  "name":"名字",
+  "Password" : "密码",
+  "email":"邮箱",
+  "Title" : "标题",
+  "Description" : "描述",
+  "Image" : "图片",
+  "On sale" : "是否在售",
+  "Rating" : "评分",
+  "Sold count" : "销售数量",
+  "Review count" : "库存数",
+  "Price" : "价格"
+}

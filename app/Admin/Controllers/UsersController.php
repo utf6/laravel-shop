@@ -27,13 +27,13 @@ class UsersController extends AdminController
         $grid = new Grid(new User());
 
         $grid->column('id', __('Id'));
-        $grid->column('name', __('昵称'));
-        $grid->column('email', __('邮箱'));
-        $grid->column('email_verified_at', __('邮箱验证时间'));
-        $grid->column('password', __('密码'));
-        $grid->column('remember_token', __('记住我'));
-        $grid->column('created_at', __('创建时间'));
-        $grid->column('updated_at', __('更新时间'));
+        $grid->column('name', __('Name'));
+        $grid->column('email', __('Email'));
+        $grid->column('email_verified_at', __('Email verified at'));
+        $grid->column('password', __('Password'));
+        $grid->column('remember_token', __('Remember token'));
+        $grid->column('created_at', __('Created at'));
+        $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }
@@ -49,13 +49,13 @@ class UsersController extends AdminController
         $show = new Show(User::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('name', __('昵称'));
-        $show->field('email', __('邮箱'));
-        $show->field('email_verified_at', __('邮箱验证时间'));
-        $show->field('password', __('密码'));
-        $show->field('remember_token', __('记住我'));
-        $show->field('created_at', __('创建时间'));
-        $show->field('updated_at', __('更新时间'));
+        $show->field('name', __('Name'));
+        $show->field('email', __('Email'));
+        $show->field('email_verified_at', __('Email verified at'));
+        $show->field('password', __('Password'));
+        $show->field('remember_token', __('Remember token'));
+        $show->field('created_at', __('Created at'));
+        $show->field('updated_at', __('Updated at'));
 
         return $show;
     }
