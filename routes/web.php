@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'HomeController@index')->name('index');
+Route::redirect('/', '/products')->name('root');
+Route::get('products', 'ProductsController@index')->name('products.index');
 
 Auth::routes(['verify' => true]);
 
