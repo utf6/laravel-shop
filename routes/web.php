@@ -15,11 +15,9 @@ use Illuminate\Support\Facades\Auth;
 */
 Route::redirect('/', '/products')->name('root');
 Route::get('products', 'ProductsController@index')->name('products.index');
+Route::get('products/{product}', 'ProductsController@show')->name('products.show');
 
 Auth::routes(['verify' => true]);
-
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
-
 
 Route::group(['middleware' => 'auth'], function (){
 
