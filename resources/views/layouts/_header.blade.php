@@ -9,9 +9,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
-
-            </ul>
+            <ul class="navbar-nav mr-auto"></ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -27,7 +25,7 @@
                     @endif
                 @else
                     <li class="nav-item">
-                        <a href="{{ route('cart.index') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+                        <a href="{{ route('cart.index') }}"><span class="glyphicon glyphicon-shopping-cart"></span></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -42,6 +40,7 @@
 
                             <a class="dropdown-item" href="{{ route('user_addresses.index') }}">收货地址</a>
                             <a class="dropdown-item" href="{{ route('products.favorites') }}">我的收藏</a>
+                            <a class="dropdown-item" href="{{ route('orders.index') }}">我的订单</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

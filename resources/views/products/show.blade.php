@@ -8,7 +8,7 @@
                 <div class="card-body product-info">
                     <div class="row">
                         <div class="col-sm-5">
-                            <img class="cover" src="{{ $product->image_url }}" alt="">
+                            <img class="cover" src="{{ $product->image_url }}" alt="{{ $product->title }}">
                         </div>
                         <div class="col-sm-7">
                             <div class="title">{{ $product->title }}</div>
@@ -21,15 +21,19 @@
                             <div class="skus">
                                 <label>选择</label>
                                 <div class="btn-group" data-toggle="buttons">
-
-                                    @foreach($product->skus as $sku)
-                                        <label class="btn btn-default sku-btn" data-price="{{ $sku->price }}" data-stock="{{ $sku->stock }}" data-toggle="tooltip" title="{{ $sku->description }}" data-placement="bottom">
-                                            <input type="radio" name="skus" autocomplete="off" value="{{ $sku->id }}"> {{ $sku->title }}
-                                        </label>
-                                    @endforeach
+                                @foreach($product->skus as $sku)
+                                    <label class="btn btn-default sku-btn" data-price="{{ $sku->price }}" data-stock="{{ $sku->stock }}" data-toggle="tooltip" title="{{ $sku->description }}" data-placement="bottom">
+                                        <input type="radio" name="skus" autocomplete="off" value="{{ $sku->id }}"> {{ $sku->title }}
+                                    </label>
+                                @endforeach
                                 </div>
                             </div>
-                            <div class="cart_amount"><label>数量</label><input type="text" class="form-control input-sm" value="1"><span>件</span><span class="stock"></span></div>
+                            <div class="cart_amount">
+                                <label>数量</label>
+                                <input type="text" class="form-control input-sm" value="1">
+                                <span>件</span>
+                                <span class="stock"></span>
+                            </div>
                             <div class="buttons">
                             @if($favored)
                                 <button class="btn btn-danger btn-disfavor">取消收藏</button>
@@ -42,8 +46,12 @@
                     </div>
                     <div class="product-detail">
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#product-detail-tab" aria-controls="product-detail-tab" role="tab" data-toggle="tab">商品详情</a></li>
-                            <li role="presentation"><a href="#product-reviews-tab" aria-controls="product-reviews-tab" role="tab" data-toggle="tab">用户评价</a></li>
+                            <li role="presentation" class="active">
+                                <a href="#product-detail-tab" aria-controls="product-detail-tab" role="tab" data-toggle="tab">商品详情</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#product-reviews-tab" aria-controls="product-reviews-tab" role="tab" data-toggle="tab">用户评价</a>
+                            </li>
                         </ul>
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="product-detail-tab">
