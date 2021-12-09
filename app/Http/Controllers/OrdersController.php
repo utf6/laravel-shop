@@ -15,6 +15,13 @@ use Illuminate\Support\Facades\DB;
 class OrdersController extends Controller
 {
 
+    /**
+     * 订单列表
+     * @param Request $request
+     * @return array|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|\think\response\View
+     * @author: wang.weitao1 <wang.weitao1@byd.com>
+     * @Time: 2021/12/9   11:17
+     */
     public function index(Request $request)
     {
         $orders = Order::query()
@@ -25,8 +32,14 @@ class OrdersController extends Controller
 
         return view('orders.index', ['orders' => $orders]);
     }
-    //
 
+    /**
+     * 创建订单
+     * @param OrderRequest $request
+     * @return mixed
+     * @author: wang.weitao1 <wang.weitao1@byd.com>
+     * @Time: 2021/12/9   11:17
+     */
     public function store(OrderRequest $request)
     {
         $user = $request->user();
@@ -86,5 +99,19 @@ class OrdersController extends Controller
 
         $this->dispatch(new CloseOrder($order, config('app.order_ttl')));
         return $order;
+    }
+
+    /**
+     * 订单详情
+     * @param Order $order
+     * @return array|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|\think\response\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @author: wang.weitao1 <wang.weitao1@byd.com>
+     * @Time: 2021/12/9   11:29
+     */
+    public function show(Order $order)
+    {
+        $this->authorize('own', $order);
+        return view('orders.show', ['order' => $order->load(['items.product', 'items.productSku'])]);
     }
 }
