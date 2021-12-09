@@ -9,7 +9,12 @@ use App\Models\ProductSku;
 
 class CartController extends Controller
 {
-    //
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|\think\response\View
+     * @author: wang.weitao1 <wang.weitao1@byd.com>
+     * @Time: 2021/10/20   16:12
+     */
     public function index(Request $request)
     {
         $cartItems = $request->user()->cartItems()->with(['productSku.product'])->get();
@@ -18,6 +23,13 @@ class CartController extends Controller
         return view('cart.index', ['cartItems' => $cartItems, 'addresses' => $addresses]);
     }
 
+    /**
+     * 加入购物车
+     * @param AddCartRequest $request
+     * @return array
+     * @author: wang.weitao1 <wang.weitao1@byd.com>
+     * @Time: 2021/12/6   11:06
+     */
     public function add(AddCartRequest $request)
     {
         $user   = $request->user();
@@ -41,6 +53,14 @@ class CartController extends Controller
         return [];
     }
 
+    /**
+     * 移出购物车
+     * @param ProductSku $sku
+     * @param Request $request
+     * @return array
+     * @author: wang.weitao1 <wang.weitao1@byd.com>
+     * @Time: 2021/12/6   11:06
+     */
     public function remove(ProductSku $sku, Request $request)
     {
         $request->user()->cartItems()->where('product_sku_id', $sku->id)->delete();
