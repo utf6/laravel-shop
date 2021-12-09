@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class UserAddress extends Model
+class UserAddress extends User
 {
     //
     protected $fillable = [
@@ -28,6 +26,6 @@ class UserAddress extends Model
      */
     public function getFullAddressAttribute()
     {
-        return "{$this->province}{$this->city}{$this->area}{$this->address}";
+        return "{$this->province}{$this->city}{$this->area} {$this->address}";
     }
 }

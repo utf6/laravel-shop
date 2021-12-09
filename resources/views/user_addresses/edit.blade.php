@@ -1,6 +1,5 @@
 @extends('layouts.app')
-@section('title', '新增收货地址')
-
+@section('title', '修改收货地址')
 @section('content')
 
     <div class="container">
@@ -9,8 +8,9 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header">新增收货地址</div>
-
+                            <div class="card-header">
+                                <h3 class="text-center">修改收货地址</h3>
+                            </div>
                             <div class="card-body">
                                 <!-- 输出后端报错开始 -->
                                 @if (count($errors) > 0)
@@ -27,15 +27,14 @@
 
                                 <!-- inline-template 代表通过内联方式引入组件 -->
                                 <user-addresses-create-and-edit inline-template>
-                                    <form method="POST" action="{{ route('user_addresses.store') }}" role="form">
+                                    <form action="{{ route('user_addresses.update', ['user_address' => $address->id]) }}" role="form" method="POST">
+                                        {{ method_field('PUT') }}
                                         <!-- 引入 csrf token 字段 -->
                                         {{ csrf_field() }}
-
                                         <div class="form-group row">
                                             <label for="name" class="col-md-2 col-form-label text-md-right">姓名：</label>
-
-                                            <div class="col-md-4">
-                                                <input id="name" type="text" class="form-control " name="name" required>
+                                            <div class="col-md-6">
+                                                <input id="name" type="text" class="form-control " name="name" value="{{ $address->name }}" required>
                                             </div>
                                         </div>
 
@@ -43,7 +42,7 @@
                                             <label for="phone" class="col-md-2 col-form-label text-md-right">电话：</label>
 
                                             <div class="col-md-6">
-                                                <input id="phone" type="text" class="form-control " name="phone" required>
+                                                <input id="phone" type="text" class="form-control " name="phone" value="{{ $address->phone }}" required>
                                             </div>
                                         </div>
 
@@ -51,12 +50,12 @@
                                             <label for="zip_code" class="col-md-2 col-form-label text-md-right">邮编：</label>
 
                                             <div class="col-md-4">
-                                                <input id="zip_code" type="text" class="form-control " name="zip_code" required>
+                                                <input id="zip_code" type="text" class="form-control " name="zip_code" value="{{ $address->zip_code }}" required>
                                             </div>
                                         </div>
 
                                         <!-- 注意这里多了 @change -->
-                                        <select-district @change="onDistrictChanged" inline-template>
+                                        <select-district :init-value="{{ json_encode([$address->province, $address->city, $address->area]) }}" @change="onDistrictChanged" inline-template>
                                             <div class="form-group row">
                                                 <label class="col-md-2 col-form-label text-md-right">省市区：</label>
                                                 <div class="col-sm-3">
@@ -80,17 +79,21 @@
                                             </div>
                                         </select-district>
 
+                                        <input type="hidden" name="province" v-model="province">
+                                        <input type="hidden" name="city" v-model="city">
+                                        <input type="hidden" name="area" v-model="district">
+
                                         <div class="form-group row">
                                             <label for="address" class="col-md-2 col-form-label text-md-right">详细地址：</label>
-
                                             <div class="col-md-9">
-                                                <input id="address" type="text" class="form-control " name="address" required="">
+                                                <input id="address" type="text" class="form-control " value="{{ $address->address ?? ''}}" name="address" required>
                                             </div>
                                         </div>
 
                                         <div class="form-group row mb-0">
-                                            <div class="col-md-8 offset-md-4">
-                                                <button type="submit" class="btn btn-primary">确认保存</button>
+                                            <div class="col-md-12 offset-md-5">
+                                                <button type="submit" class="btn btn-primary">修改</button>
+                                                <a href="{{ route('user_addresses.index') }}" class="btn">返回</a>
                                             </div>
                                         </div>
                                     </form>

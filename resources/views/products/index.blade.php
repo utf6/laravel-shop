@@ -3,16 +3,17 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-10 col-lg-offset-1">
+        <div class="col-lg-12 col-lg-offset-1">
             <div class="card card-default">
                 <div class="card-body">
 
                     <!-- 筛选组件开始 -->
                     <div class="row">
                         <form action="{{ route('products.index') }}" class="form-inline search-form">
-                            <input type="text" class="form-control input-sm" name="search" placeholder="搜索">
+                            <input type="text" class="form-control input-sm mr-2" name="search" placeholder="搜索">
+                            <button class="btn btn-primary btn-">搜索</button>
 
-                            <select name="order" class="form-control input-sm float-right">
+                            <select name="order" class="form-control input-sm float-right ml-5">
                                 <option value="">排序方式</option>
                                 <option value="price_asc">价格从低到高</option>
                                 <option value="price_desc">价格从高到低</option>
@@ -21,8 +22,6 @@
                                 <option value="rating_desc">评价从高到低</option>
                                 <option value="rating_asc">评价从低到高</option>
                             </select>
-
-                            <button class="btn btn-primary btn-sm">搜索</button>
                         </form>
                     </div>
 
@@ -59,7 +58,7 @@
 
 @section('scriptsAfterJs')
     <script>
-        var filters = "{!! json_encode($filters) !!}";
+        filters = {!! json_encode($filters) !!}
         $(function () {
             $('.search-form input[name=search]').val(filters.search);
             $('.search-form select[name=order]').val(filters.order);
