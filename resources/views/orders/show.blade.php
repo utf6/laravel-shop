@@ -6,16 +6,16 @@
         <div class="col-lg-12 col-lg-offset-1">
             <div class="card card-default">
                 <div class="card-header">
-                    <h4>订单详情</h4>
+                    <h5 class="card-text">订单详情</h5>
                 </div>
                 <div class="card-body">
-                    <table class="table">
+                    <table class="table table-bordered">
                         <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>商品信息</th>
-                            <th class="text-center">单价</th>
-                            <th class="text-center">数量</th>
-                            <th class="text-right item-amount">小计</th>
+                            <th>单价</th>
+                            <th>数量</th>
+                            <th>小计</th>
                         </tr>
                         </thead>
                         @foreach($order->items as $index => $item)
@@ -38,9 +38,6 @@
                                 <td class="item-amount text-right vertical-middle">￥{{ number_format($item->price * $item->amount, 2, '.', '') }}</td>
                             </tr>
                         @endforeach
-                        <tr>
-                            <td colspan="4"></td>
-                        </tr>
                     </table>
                     <div class="order-bottom">
                         <div class="order-info">

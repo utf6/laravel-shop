@@ -10,7 +10,7 @@
                     <ul class="list-group">
                         @foreach($orders as $order)
                             <li class="list-group-item">
-                                <div class="card card-default">
+                                <div class="card">
                                     <div class="card-header">
                                         订单号：{{ $order->no }}
                                         <span class="pull-right">下单日期：{{ $order->created_at->format('Y-m-d H:i:s') }}</span>
@@ -18,15 +18,17 @@
                                     <div class="card-body">
                                         <table class="table table-bordered">
                                             <thead>
-                                            <tr>
+                                            <tr class="text-center">
                                                 <th>商品信息</th>
-                                                <th class="text-center">单价</th>
-                                                <th class="text-center">数量</th>
-                                                <th class="text-center">订单总价</th>
-                                                <th class="text-center">状态</th>
-                                                <th class="text-center">操作</th>
+                                                <th>单价</th>
+                                                <th>数量</th>
+                                                <th>订单总价</th>
+                                                <th>状态</th>
+                                                <th>操作</th>
                                             </tr>
                                             </thead>
+
+                                            <tbody>
                                             @foreach($order->items as $index => $item)
                                                 <tr>
                                                     <td class="product-info">
@@ -69,6 +71,8 @@
                                                     @endif
                                                 </tr>
                                             @endforeach
+                                            </tbody>
+
                                         </table>
                                     </div>
                                 </div>

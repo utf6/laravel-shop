@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    //
 
     /**
      * 未验证邮箱提示界面

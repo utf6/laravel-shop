@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Http\Requests\Request;
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

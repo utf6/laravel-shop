@@ -33,7 +33,7 @@ class UserAddressesController extends Controller
 
     /**
      * 保存收货地址
-     * @param UserAddressRequest $request
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -56,8 +56,6 @@ class UserAddressesController extends Controller
      * @param UserAddress $userAddress
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|\think\response\View
      * @throws \Illuminate\Auth\Access\AuthorizationException
-     * @author: wang.weitao1 <wang.weitao1@byd.com>
-     * @Time: 2021/10/19   13:53
      */
     public function edit(UserAddress $userAddress)
     {
@@ -72,8 +70,6 @@ class UserAddressesController extends Controller
      * @param UserAddressRequest $request
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
-     * @author: wang.weitao1 <wang.weitao1@byd.com>
-     * @Time: 2021/10/19   13:53
      */
     public function update(UserAddress $userAddress, UserAddressRequest $request)
     {
@@ -90,8 +86,6 @@ class UserAddressesController extends Controller
      * @param UserAddress $userAddress
      * @return array
      * @throws \Exception
-     * @author: wang.weitao1 <wang.weitao1@byd.com>
-     * @Time: 2021/10/19   13:50
      */
     public function destroy(UserAddress $userAddress)
     {
